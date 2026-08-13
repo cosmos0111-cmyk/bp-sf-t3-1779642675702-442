@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (1/2) · sf-t3-1779642675702-442</title>
+  <meta name="description" content="sf-t3-1779642675702-442에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://sf-t3-1779642675702-442.maphoshirts.xyz/posts.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ /* RESET + BASE */
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ html { font-size: 16px; scroll-behavior: smooth; }
+ body {
+ background-color: #000000;
+ color: #ffffff;
+ font-family: Impact, 'Arial Black', system-ui, -apple-system, sans-serif;
+ line-height: 1.1;
+ padding: 0;
+ margin: 0;
+ overflow-x: hidden;
+ word-break: keep-all;
+ }
+ img, svg { display: block; max-width: 100%; }
+ a { color: inherit; text-decoration: none; }
+ ul, ol { list-style: none; }
+ h1, h2, h3, h4 { font-weight: 400; letter-spacing: -0.02em; }
+
+ /* TYPOGRAPHY RAW */
+ h1 { font-size: clamp(3.2rem, 12vw, 6rem); text-transform: uppercase; }
+ h2 { font-size: clamp(2.4rem, 8vw, 4.2rem); text-transform: uppercase; }
+ h3 { font-size: 1.8rem; }
+ .body-copy { font-family: 'Courier New', system-ui, monospace; font-size: 1.1rem; line-height: 1.4; }
+
+ /* SPACE SYSTEM */
+ .space-section { padding: 72px 24px; margin-bottom: 120px; }
+ .space-section:last-of-type { margin-bottom: 0; }
+ .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+
+ /* BRUTALIST BORDERS + ACCENTS */
+ .brutal-border { border: 4px solid #ffffff; }
+ .brutal-border-accent { border: 4px solid #ff3b00; }
+ .skewed { transform: rotate(-2deg); }
+ .skewed-reverse { transform: rotate(2deg); }
+ .bg-accent { background-color: #ff3b00; color: #000000; }
+ .bg-black { background-color: #000000; }
+ .text-accent { color: #ff3b00; }
+ .text-white { color: #ffffff; }
+ .text-black { color: #000000; }
+
+ /* HEADER / NAV (full bleed) */
+ header {
+ background: #000000;
+ border-bottom: 4px solid #ff3b00;
+ padding: 24px 24px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ position: relative;
+ z-index: 100;
+ }
+ .logo {
+ font-size: 2.4rem;
+ letter-spacing: -0.04em;
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ text-transform: uppercase;
+ }
+ .logo span { color: #ff3b00; }
+ nav ul { display: flex; gap: 40px; font-size: 1.2rem; text-transform: uppercase; }
+ nav a { padding: 8px 0; border-bottom: 3px solid transparent; transition: 0.1s; }
+ nav a:hover { border-bottom-color: #ff3b00; color: #ff3b00; }
+
+ /* HAMBURGER (mobile) */
+ .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 7px; background: none; border: none; padding: 8px; }
+ .hamburger span { width: 34px; height: 4px; background: #ffffff; display: block; }
+ #nav-toggle { display: none; }
+ #nav-toggle:checked ~ nav { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #000; border-bottom: 4px solid #ff3b00; padding: 24px; gap: 20px; }
+ #nav-toggle:checked ~ nav ul { flex-direction: column; gap: 20px; }
+
+ /* HERO */
+ .hero {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 48px;
+ align-items: center;
+ min-height: 70vh;
+ padding: 72px 24px 48px;
+ border-bottom: 4px solid #ff3b00;
+ margin-bottom: 120px;
+ }
+ .hero-content {
+ flex: 1 1 400px;
+ display: flex;
+ flex-direction: column;
+ gap: 36px;
+ }
+ .hero-visual {
+ flex: 1 1 400px;
+ min-height: 400px;
+ background: repeating-linear-gradient(45deg, #ff3b00 0px, #ff3b00 8px, #000000 8px, #000000 16px);
+ border: 6px solid #ffffff;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 5rem;
+ transform: rotate(1deg);
+ box-shadow: -12px 12px 0 #ff3b00;
+ }
+ .hero-visual span { background: #000; padding: 24px 40px; border: 4px solid #fff; transform: rotate(-3deg); }
+ .cta-button {
+ display: inline-block;
+ background: #ff3b00;
+ color: #000000;
+ padding: 18px 48px;
+ font-size: 2rem;
+ text-transform: uppercase;
+ border: 4px solid #ffffff;
+ width: fit-content;
+ transition: 0.1s;
+ cursor: pointer;
+ letter-spacing: 2px;
+ }
+ .cta-button:hover { background: #ffffff; color: #ff3b00; border-color: #ff3b00; }
+
+ /* SECTIONS OVERLAP / NEGATIVE MARGIN */
+ .overlap-section { margin-top: -60px; position: relative; z-index: 10; }
+
+ /* REVIEW CARDS (UGC) */
+ .review-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+ gap: 48px;
+ margin-top: 48px;
+ }
+ .review-card {
+ background: #000000;
+ border: 4px solid #ffffff;
+ padding: 32px 24px;
+ display: flex;
+ flex-direction: column;
+ gap: 20px;
+ transform: rotate(var(--rot, 0deg));
+ transition: 0.1s;
+ }
+ .review-card:nth-child(odd) { --rot: -1deg; }
+ .review-card:nth-child(even) { --rot: 2deg; }
+ .review-card:hover { border-color: #ff3b00; transform: scale(1.02) rotate(0); }
+ .review-header { display: flex; justify-content: space-between; font-size: 1.1rem; text-transform: uppercase; border-bottom: 2px solid #ff3b00; padding-bottom: 12px; }
+ .review-name { font-weight: bold; }
+ .review-date { font-family: 'Courier New', monospace; color: #888; }
+ .review-stars { color: #ff3b00; font-size: 1.6rem; letter-spacing: 4px; }
+ .review-text { font-family: 'Courier New', monospace; line-height: 1.5; font-size: 1rem; }
+
+ /* ASYMMETRIC BLOCKS EXAMPLE */
+ .asymmetric-grid {
+ display: grid;
+ grid-template-columns: 2fr 1fr 1fr;
+ gap: 48px;
+ margin: 48px 0;
+ }
+ .asymmetric-grid > * { border: 4px solid #ffffff; padding: 32px 24px; background: #000; }
+ .asymmetric-grid > :first-child { grid-row: span 2; transform: rotate(-1deg); border-color: #ff3b00; }
+ .asymmetric-grid > :last-child { transform: rotate(1deg); }
+
+ /* FOOTER */
+ footer {
+ border-top: 6px solid #ff3b00;
+ padding: 48px 24px;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+ gap: 32px;
+ font-family: 'Courier New', monospace;
+ text-transform: uppercase;
+ font-size: 1rem;
+ }
+ footer a { border-bottom: 2px solid transparent; }
+ footer a:hover { border-bottom-color: #ff3b00; color: #ff3b00; }
+
+ /* RESPONSIVE */
+ @media (max-width: 768px) {
+ .hamburger { display: flex; }
+ nav { display: none; }
+ nav ul { flex-direction: column; gap: 20px; }
+ .hero { flex-direction: column; padding: 48px 16px 24px; margin-bottom: 80px; }
+ .hero-visual { min-height: 250px; }
+ .space-section { padding: 48px 16px; margin-bottom: 80px; }
+ .asymmetric-grid { grid-template-columns: 1fr; }
+ .asymmetric-grid > * { grid-row: auto; }
+ .review-grid { gap: 32px; }
+ .cta-button { width: 100%; text-align: center; font-size: 1.6rem; padding: 16px 24px; }
+ footer { flex-direction: column; align-items: flex-start; }
+ }
+ @media (max-width: 480px) {
+ h1 { font-size: 2.8rem; }
+ h2 { font-size: 2rem; }
+ .logo { font-size: 1.8rem; }
+ }
+ </style>
+  <meta property="og:title" content="글 목록 (1/2) · sf-t3-1779642675702-442">
+  <meta property="og:description" content="sf-t3-1779642675702-442에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://sf-t3-1779642675702-442.maphoshirts.xyz/posts.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header>
+ <div class="logo">
+ <span>👕</span> 마포<span>셔츠</span>룸
+ </div>
+ <input type="checkbox" id="nav-toggle" hidden>
+ <label for="nav-toggle" class="hamburger" aria-label="메뉴 열기">
+ 
+ </label>
+ <nav>
+ <ul>
+ <li><a href="#">홈</a></li>
+ <li><a href="#">메뉴</a></li>
+ <li><a href="#">리뷰</a></li>
+ <li><a href="#">위치</a></li>
+ 
+ </ul>
+ </nav>
+ </header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 33개 · 1/2 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/field_note-001-1n2jsoc.html">마포 셔츠룸 현장에서 놓치기 쉬운 포인트를 기록해봤다</a>
+        <p class="post-item__summary">마포 지역은 독특한 감성을 지닌 카페와 문화 공간이 밀집해 있어 많은 이들이 방문하는 곳입니다. 단순히 커피를 즐기는 것을 넘어 공간이 주는 분위기를 만끽하는 것이 최근 트렌드인데, 특히 마포 셔츠</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260705-997.html">마포의 힙한 카페를 찾는 이들이 정작 놓치고 있는 진짜 화려함</a>
+        <p class="post-item__summary">마포 근처에서 소위 힙하다고 불리는 카페를 찾아 헤매는 사람들이 많다. 다들 감성적인 인테리어를 찾으며 줄을 서지만, 사실 그런 공간은 금방 질리기 마련이다. 겉만 번지르르한 공간에서 커피 한 잔 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0086.html">마포 셔츠룸, 전통과 힙이 만나는 힙플레이스 카페</a>
+        <p class="post-item__summary">마포 셔츠룸은 젊은이들 사이에서 빠르게 입소문을 타고 있는 힙플레이스 카페다. 스튜디오 같은 인테리어와 빈티지 의류 액세서리가 조화롭게 배치돼 있다. 그 풍경은 마포의 전통적 거리 풍경과 현대적 감</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0087.html">마포 셔츠룸, 힙플레이스 카페 감성으로 재해석되다</a>
+        <p class="post-item__summary">최근 마포 지역에서 셔츠룸이 기존의 틀을 벗어나 새로운 문화 공간으로 변화하고 있다. 힙플레이스 카페 스타일의 감각적인 인테리어와 세련된 공간 연출이 더해지면서, 기존 방문객은 물론 새로운 연령층의</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0088.html">마포 셔츠룸에서 느끼는 힙한 자리</a>
+        <p class="post-item__summary">마포 셔츠룸은 마포구 한복판에 자리 잡은 힙플레이스 카페다. 여기서는 빈티지 감성과 현대적인 인테리어가 조화를 이루며, 편안한 분위기에서 다양한 음료와 디저트를 즐길 수 있다.</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0089.html">마포 셔츠룸, 힙플레이스 카페 문화의 중심</a>
+        <p class="post-item__summary">마포 지역에서 셔츠룸은 단순한 유흥 공간을 넘어 힙플레이스 카페 문화와 결합하며 새로운 주목을 받고 있다. 기존의 이미지와 달리 세련된 인테리어와 프라이빗한 공간을 갖춘 장소들이 늘어나는 추세다.</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0090.html">마포 셔츠룸에서 느끼는 힙컬처의 진수</a>
+        <p class="post-item__summary">마포는 예술과 음악이 어우러진 거리와 함께 젊은이들의 문화가 살아 숨 쉬는 곳이다. 그럼에도 불구하고 버거운 인구 밀집 에너지는 때로는 혼란스러울 수 있다. 마포의 바쁜 거리 속에서 한 걸음 내딛어</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0091.html">마포 셔츠룸, 힙플레이스 카페 콘셉트의 새로운 공간</a>
+        <p class="post-item__summary">마포 지역에서 힙플레이스 카페 콘셉트로 운영되는 셔츠룸이 최근 꾸준한 관심을 받고 있다. 기존의 무겁고 폐쇄적인 이미지와 달리, 보다 캐주얼하고 모던한 공간으로 꾸며진 이곳은 새로운 경험을 찾는 사</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0092.html">마포 셔츠룸, 힙플레이스 카페에서 느끼는 문화의 새로운 풍경</a>
+        <p class="post-item__summary">마포에 위치한 힙플레이스 카페 마포 셔츠룸은 아트와 음악이 어우러진 분위기로 젊은 층을 끌어들인다. 소규모 공연과 무료 커피가 제공되며, 줄을 서서 기다리는 것보다 사전 예약으로 편리하게 이용할 수</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0093.html">마포 셔츠룸, 힙플레이스 카페의 새로운 트렌드</a>
+        <p class="post-item__summary">마포 지역에는 최근 색다른 콘셉트의 카페들이 늘어나고 있다. 특히 힙플레이스 카페 스타일을 접목한 마포 셔츠룸은 감각적인 인테리어와 차별화된 공간 구성으로 입소문을 타고 있다. 기존의 이미지와 달리</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0094.html">마포 셔츠룸, 힙한 카페에서 만나보는 디지털 힐링</a>
+        <p class="post-item__summary">마포 셔츠룸은 마포구의 힙한 분위기를 한눈에 감상할 수 있는 카페다. 여유로운 인테리어와 감성 조명이 디저트 타임을 더욱 특별하게 만들어 준다. 나무 테이블과 서빙 베이커리 메뉴는 방문객에게 진정한</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0095.html">마포 셔츠룸 힙플레이스 카페에서의 새로운 경험</a>
+        <p class="post-item__summary">최근 마포 지역에서 셔츠룸 콘셉트의 힙플레이스 카페가 새로운 트렌드로 자리잡고 있다. 개성 있는 인테리어와 프라이빗한 공간 구성이 방문객들의 호기심을 자극하며 꾸준한 유입을 이끌어내고 있다.</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0096.html">마포 셔츠룸: 힙플레이스 카페가 선보이는 편안한 마포의 모임 공간</a>
+        <p class="post-item__summary">마포 셔츠룸은 마포구 한복판에서 힙플레이스 카페로 자리 잡은 곳이다. 독특한 인테리어와 음악 선정이 매력적이며, 젊은 층과 지인 간 모임이 활발하다. 이처럼 분위기는 편안하면서도 친근한 공간을 제공</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0097.html">마포 셔츠룸부터 힙플레이스 카페까지, 지역 상권의 새로운 흐름</a>
+        <p class="post-item__summary">마포 지역은 최근 들어 감각적인 인테리어와 독특한 콘셉트를 앞세운 힙플레이스 카페들이 빠르게 늘어나며 새로운 문화의 중심지로 떠오르고 있다. 홍대입구부터 연남동, 합정, 상수동까지 이어지는 카페 거</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0098.html">마포 셔츠룸에서 느끼는 힙플레이스 체험</a>
+        <p class="post-item__summary">마포 셔츠룸은 마포구 서교동에 위치한 힙플레이스 카페로, 빈티지한 인테리어와 깔끔한 커피 라인업이 인상적입니다. 매장의 골창고 분위기와 낮은 조명이 어우러져 편안한 대화가 이어지기 좋습니다.</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0099.html">마포 셔츠룸의 매력과 주변 회식 문화</a>
+        <p class="post-item__summary">마포 일대에는 독특한 테마와 감각적인 인테리어를 갖춘 힙플레이스 카페 스타일의 셔츠룸이 늘어나고 있다. 기존 유흥 업소와 달리 캐주얼하면서도 프라이빗한 분위기를 선호하는 젊은 직장인들에게 꾸준히 입</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0100.html">마포 셔츠룸에서 새벽을 타고 떠나는 힙플레이스</a>
+        <p class="post-item__summary">마포 셔츠룸은 마포의 비밀스러운 힙플레이스 카페다. 골목 깊숙이 자리한 이곳은 대형 창문과 낮은 조명이 어우러져 입구를 알록달록하게 만든다. 커피 향과 재즈 스피커가 동시에 울려 퍼지며, 손님들은 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0101.html">마포 셔츠룸 감성 힙플레이스 카페의 새로운 트렌드</a>
+        <p class="post-item__summary">최근 마포 지역을 중심으로 이색적인 콘셉트의 카페들이 주목받고 있다. 기존의 단순한 커피 공간을 넘어, 셔츠룸 인테리어를 접목한 힙플레이스 카페가 MZ세대 사이에서 입소문을 타고 있다. 복합 문화 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0102.html">마포 셔츠룸, 힙플레이스 카페에서 느끼는 작은 예술의 순간</a>
+        <p class="post-item__summary">마포의 작은 골목에 자리한 마포 셔츠룸은 힙플레이스 카페라서, 거리 풍경이 마치 포트레이트처럼 느껴진다. 내부는 곡선 라이트와 전통 목재가 어우러져 멋진 분위기를 만든다. 아침마다 커피 향이 가득해</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0458.html">마포 셔츠룸 방문객을 위한 4</a>
+        <p class="post-item__summary">마포 셔츠룸 관련 키워드를 검색하는 이용자들 사이에서 코딩 교육이 단순히 취미를 넘어 실무 역량으로 자리 잡고 있다는 것은 흔한 오해입니다. 사실 많은 분들이 업무 효율화를 위해 자동화 로직을 배우</p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <span class="pager__current">1</span>
+      <a class="pager__link" href="posts-2.html">2</a>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
